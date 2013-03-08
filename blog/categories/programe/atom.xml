@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[HelcropS on Earth]]></title>
-  <link href="http://helcrops.github.com/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Programe | HelcropS on Earth]]></title>
+  <link href="http://helcrops.github.com/blog/categories/programe/atom.xml" rel="self"/>
   <link href="http://helcrops.github.com/"/>
   <updated>2013-03-08T19:24:17+08:00</updated>
   <id>http://helcrops.github.com/</id>
@@ -12,101 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[Octopress Bloging Basics]]></title>
-    <link href="http://helcrops.github.com/blog/2013/03/08/octopress-bloging-basics/"/>
-    <updated>2013-03-08T18:45:00+08:00</updated>
-    <id>http://helcrops.github.com/blog/2013/03/08/octopress-bloging-basics</id>
-    <content type="html"><![CDATA[<h1>写博客的基础知识</h1>
-
-<p>octopress提供一些rake工具通过元数据并依据jekyll的命名规范创建预览文章和页面。它也产生一个全局的并基于jekyll的目录。</p>
-
-<!-- more -->
-
-
-<h2>博客文章</h2>
-
-<p>博客文章必须存储在source/_posts，并且依据jekyll的命名规范YYYY-MM-DD-post-title.markdown。</p>
-
-<h3>语法</h3>
-
-<p>rake new_post[&#8220;title&#8221;] 中文支持如何？</p>
-
-<p>new_post需要一个文章题目，并且会去除不良的url字符。默认扩展名是markdown，你可以在Rakefile中设置。</p>
-
-<h3>例子</h3>
-
-<pre><code>rake new_post["Zombie Ninjas Attack: A survivor's retrospective"].
-</code></pre>
-
-<p>文件名决定文章的链接。根据默认的permalink settings，url类似http://site.com/blog/2011/07/03/zombie-ninjas-attack-a-survivors-retrospective/index.html
-用编辑器打开这个文章，在source/_post中，你会发现一些yaml语法的说明，告诉jekyll如何展示文章和页面。</p>
-
-<pre><code>---
-layout: post
-title: "Zombie Ninjas Attack: A survivor's retrospective"
-date: 2011-07-03 5:59
-comments: true
-external-url:
-categories:
----
-</code></pre>
-
-<p>你可以关闭评论和标签。如果是多人博客，你可以设置作者author:name。如果是草稿，你可以published:false。如果是一个链接的文章，添加一个external-url就行了。
-添加标签：</p>
-
-<pre><code># One category
-categories: Sass
-
-# Multiple categories example 1
-categories: [CSS3, Sass, Media Queries]
-
-# Multiple categories example 2
-categories:
-- CSS3
-- Sass
-- Media Queries
-</code></pre>
-
-<h2>新页面</h2>
-
-<p>你可以在页面的任何地方添加新页面，jekyll会处理它们。链接地址会直接添加到文件路径，所以about.markdown会变成site.com/about.html。如果你更喜欢site.com/about/的链接，你应该创建一个页面类似about/index.markdown.octopress的rake命令如下</p>
-
-<pre><code>rake new_page[super-awesome]
-# creates /source/super-  awesome/index.markdown
-
-rake new_page[super-awesome/page.html]
-# creates /source/super-awesome/page.html
-</code></pre>
-
-<p>默认扩展名还是markdown你可以自行设置。</p>
-
-<pre><code>---
-layout: page
-title: "Super Awesome"
-date: 2011-07-03 5:59
-comments: true
-sharing: true
-footer: true
----
-</code></pre>
-
-<p>开头是一段yaml语法。你可以设置是否分享？</p>
-
-<h2>内容</h2>
-
-<p>页面和文章的内容由你在博客文件中指定的markup引擎生成（冤啊，没指定！）。另外，你也可以使用jekyll中的液态模版功能。
-嵌入一个<!-- more --\>在你的文章中能到到，阅读更多的效果。</p>
-
-<h2>生成和预览</h2>
-
-<pre><code>rake generate   # Generates posts and pages into the public directory
-rake watch      # Watches source/ and sass/ for changes and regenerates
-rake preview    # Watches, and mounts a webserver at http://localhost:4000
-</code></pre>
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[markup syntax]]></title>
@@ -676,7 +581,7 @@ title attribute.&lt;/p&gt;
 [link text][A]
 </code></pre>
 
-<p><em>默认的链接标签</em>功能让你可以省略指定链接标签，这种情形下，链接标签和链接文字会视为相同，要用默认链接标签只要在链接文字后面加上一个空的方括号，如果要让 &#8220;Google&#8221; 链接到 google.com，可以简化成：</p>
+<p><em>默认的链接标签</em>功能让你可以省略指定链接标签，这种情形下，链接标签和链接文字会视为相同，要用默认链接标签只要在链接文字后面加上一个空的方括号，如果要让 "Google" 链接到 google.com，可以简化成：</p>
 
 <pre><code>[Google][]
 </code></pre>
@@ -854,7 +759,7 @@ equivalent of &lt;code&gt;&amp;amp;mdash;&lt;/code&gt;.&lt;/p&gt;
 <li>一个惊叹号 <code>!</code></li>
 <li>接着一个方括号，里面放上图片的替换文字</li>
 <li>接着一个普通括号，里面放上图片的网址，最后还可以用引号包住并加上
-选择性的 &#8216;title&#8217; 文字。</li>
+选择性的 'title' 文字。</li>
 </ul>
 
 
@@ -943,20 +848,23 @@ _   底线
     <link href="http://helcrops.github.com/blog/2013/03/08/ruby-startup/"/>
     <updated>2013-03-08T15:42:00+08:00</updated>
     <id>http://helcrops.github.com/blog/2013/03/08/ruby-startup</id>
-    <content type="html"><![CDATA[<p>仅仅测试utf-8编码</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+    <content type="html"><![CDATA[<p>仅仅测试utf-8编码
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># Here is ruby source code</span>
-</span><span class='line'><span class="k">def</span> <span class="nf">doublex</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&lt;</span><span class="sr">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sr">&lt;h1&gt;Here is ruby source code&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span><span class="k">def</span> <span class="nf">doublex</span>
 </span><span class='line'>  <span class="n">x</span><span class="o">*</span><span class="n">x</span>
 </span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>关于octopress中文博客名生成的一种方法。使用sed替换第三行title为中文博客名。</p>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+关于octopress中文博客名生成的一种方法。使用sed替换第三行title为中文博客名。</p>
 
 <!-- more -->
 

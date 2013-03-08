@@ -1,0 +1,295 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Octopress Bloging Basics - HelcropS on Earth</title>
+  <meta name="author" content="Helcrops">
+
+  
+  <meta name="description" content="写博客的基础知识 octopress提供一些rake工具通过元数据并依据jekyll的命名规范创建预览文章和页面。它也产生一个全局的并基于jekyll的目录。 博客文章 博客文章必须存储在source/_posts，并且依据jekyll的命名规范YYYY-MM-DD-post-title. &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://helcrops.github.com/blog/2013/03/08/octopress-bloging-basics/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="HelcropS on Earth" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">HelcropS on Earth</a></h1>
+  
+    <h2>a man, a way, a life</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:helcrops.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Octopress Bloging Basics</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-08T18:45:00+08:00" pubdate data-updated="true">Mar 8<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h1>写博客的基础知识</h1>
+
+<p>octopress提供一些rake工具通过元数据并依据jekyll的命名规范创建预览文章和页面。它也产生一个全局的并基于jekyll的目录。</p>
+
+<!-- more -->
+
+
+<h2>博客文章</h2>
+
+<p>博客文章必须存储在source/_posts，并且依据jekyll的命名规范YYYY-MM-DD-post-title.markdown。</p>
+
+<h3>语法</h3>
+
+<p>rake new_post[&#8220;title&#8221;] 中文支持如何？</p>
+
+<p>new_post需要一个文章题目，并且会去除不良的url字符。默认扩展名是markdown，你可以在Rakefile中设置。</p>
+
+<h3>例子</h3>
+
+<pre><code>rake new_post["Zombie Ninjas Attack: A survivor's retrospective"].
+</code></pre>
+
+<p>文件名决定文章的链接。根据默认的permalink settings，url类似http://site.com/blog/2011/07/03/zombie-ninjas-attack-a-survivors-retrospective/index.html
+用编辑器打开这个文章，在source/_post中，你会发现一些yaml语法的说明，告诉jekyll如何展示文章和页面。</p>
+
+<pre><code>---
+layout: post
+title: "Zombie Ninjas Attack: A survivor's retrospective"
+date: 2011-07-03 5:59
+comments: true
+external-url:
+categories:
+---
+</code></pre>
+
+<p>你可以关闭评论和标签。如果是多人博客，你可以设置作者author:name。如果是草稿，你可以published:false。如果是一个链接的文章，添加一个external-url就行了。
+添加标签：</p>
+
+<pre><code># One category
+categories: Sass
+
+# Multiple categories example 1
+categories: [CSS3, Sass, Media Queries]
+
+# Multiple categories example 2
+categories:
+- CSS3
+- Sass
+- Media Queries
+</code></pre>
+
+<h2>新页面</h2>
+
+<p>你可以在页面的任何地方添加新页面，jekyll会处理它们。链接地址会直接添加到文件路径，所以about.markdown会变成site.com/about.html。如果你更喜欢site.com/about/的链接，你应该创建一个页面类似about/index.markdown.octopress的rake命令如下</p>
+
+<pre><code>rake new_page[super-awesome]
+# creates /source/super-  awesome/index.markdown
+
+rake new_page[super-awesome/page.html]
+# creates /source/super-awesome/page.html
+</code></pre>
+
+<p>默认扩展名还是markdown你可以自行设置。</p>
+
+<pre><code>---
+layout: page
+title: "Super Awesome"
+date: 2011-07-03 5:59
+comments: true
+sharing: true
+footer: true
+---
+</code></pre>
+
+<p>开头是一段yaml语法。你可以设置是否分享？</p>
+
+<h2>内容</h2>
+
+<p>页面和文章的内容由你在博客文件中指定的markup引擎生成（冤啊，没指定！）。另外，你也可以使用jekyll中的液态模版功能。
+嵌入一个<!-- more --\>在你的文章中能到到，阅读更多的效果。</p>
+
+<h2>生成和预览</h2>
+
+<pre><code>rake generate   # Generates posts and pages into the public directory
+rake watch      # Watches source/ and sass/ for changes and regenerates
+rake preview    # Watches, and mounts a webserver at http://localhost:4000
+</code></pre>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Helcrops</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-08T18:45:00+08:00" pubdate data-updated="true">Mar 8<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/octopress/'>Octopress</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://helcrops.github.com/blog/2013/03/08/octopress-bloging-basics/" data-via="" data-counturl="http://helcrops.github.com/blog/2013/03/08/octopress-bloging-basics/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/03/08/markup-syntax/" title="Previous Post: markup syntax">&laquo; markup syntax</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/03/08/octopress-bloging-basics/">Octopress Bloging Basics</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/08/markup-syntax/">markup syntax</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/08/ruby-startup/">Ruby Startup</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Helcrops -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
