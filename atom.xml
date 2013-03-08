@@ -4,7 +4,7 @@
   <title><![CDATA[HelcropS on Earth]]></title>
   <link href="http://helcrops.github.com/atom.xml" rel="self"/>
   <link href="http://helcrops.github.com/"/>
-  <updated>2013-03-08T19:24:17+08:00</updated>
+  <updated>2013-03-08T19:31:32+08:00</updated>
   <id>http://helcrops.github.com/</id>
   <author>
     <name><![CDATA[Helcrops]]></name>
@@ -105,6 +105,15 @@ footer: true
 rake watch      # Watches source/ and sass/ for changes and regenerates
 rake preview    # Watches, and mounts a webserver at http://localhost:4000
 </code></pre>
+
+<h2>推送到github</h2>
+
+<pre><code>rake generate
+rake deploy
+</code></pre>
+
+<p>github上有两个分支，rake
+deploy到最终的master分支；另一个分支是origin，存放源文件，要用git把源文件推到这里。</p>
 ]]></content>
   </entry>
   
